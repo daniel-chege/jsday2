@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum</title>
+</head>
+<body>
+    <h1>Sum</h1>
+    <p>Symbols but seperated by commas:</p>
+    <input id="userInput" type="text">
+    <button onclick="processInput()">Process</button>
+    <p id="result"></p>
+
+    <script>
+        function processInput() {
+            const userInput = document.getElementById("userInput").value;
+            const result = userInput.replace(/#/g, '0').replace(/%/g, '0').replace(/@/g, '0');
+            console.log(result);
+
+            if (result.length === 0) {
+                document.getElementById("result").textContent = "Result: 0";
+            } else {
+                const numbersArray = result.split(",");
+                const sum = numbersArray.reduce((a, b) => +a + +b, 0);
+                document.getElementById("result").textContent = `Result: ${sum}`;
+            }
+        }
+    </script>
+</body>
+</html>
