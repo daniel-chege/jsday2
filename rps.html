@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock-Paper-Scissors Game</title>
+</head>
+<body>
+    <h1>Rock-Paper-Scissors Game</h1>
+    <p>Choose rock, paper, or scissors:</p>
+    <input id="userChoice" type="text">
+    <button onclick="playGame()">Play</button>
+    <p id="result"></p>
+
+    <script>
+        function playGame() {
+            const userChoice = document.getElementById("userChoice").value.toUpperCase();
+            const computerChoice = Math.random();
+            let computerSelection;
+
+            if (computerChoice < 0.34) {
+                computerSelection = "rock";
+            } else if (computerChoice <= 0.67) {
+                computerSelection = "paper";
+            } else {
+                computerSelection = "scissors";
+            }
+
+            const result = compare(userChoice, computerSelection);
+            document.getElementById("result").textContent = result;
+        }
+
+        const compare = (choice1, choice2) => {
+    if (choice1 === choice2) {
+        return "It's a tie!";
+    } else if (choice1 === "rock") {
+        return choice2 === "scissors" ? "Rock wins!" : "Paper wins!";
+    } else if (choice1 === "paper") {
+        return choice2 === "rock" ? "Paper wins!" : "Scissors wins!";
+    } else if (choice1 === "scissors") {
+        return choice2 === "rock" ? "Rock wins!" : "Scissors wins!";
+    } else {
+        return "Invalid input. Please choose rock, paper, or scissors.";
+    }
+};
+    </script>
+</body>
+</html>
